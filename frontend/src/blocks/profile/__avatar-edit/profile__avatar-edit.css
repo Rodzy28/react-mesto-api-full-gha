@@ -1,0 +1,14 @@
+.profile__avatar-edit {
+  min-width: 120px;
+  min-height: 120px;
+  background: url(../../../images/button/edit_avatar.svg) no-repeat center/cover;
+  background-size: 26px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.profile__avatar-edit:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  cursor: pointer;
+}

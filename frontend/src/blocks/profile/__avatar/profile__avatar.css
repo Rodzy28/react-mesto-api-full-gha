@@ -1,0 +1,13 @@
+.profile__avatar {
+  min-width: 120px;
+  min-height: 120px;
+  background: no-repeat center/cover;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 779px) {
+  .profile__avatar {
+    margin: 0 auto 26px;
+  }
+}
