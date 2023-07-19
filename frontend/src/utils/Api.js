@@ -60,13 +60,6 @@ class Api {
     });
   }
 
-  // deleteLike(id) {
-  //   return fetch(`${this._url}/cards/${id}/likes`, {
-  //     method: 'DELETE',
-  //     headers: this._headers,
-  //   }).then(this._handlerServerResponse);
-  // }
-
   deleteCard(id) {
     return this._request(`${this._url}/cards/${id}`, {
       method: 'DELETE',

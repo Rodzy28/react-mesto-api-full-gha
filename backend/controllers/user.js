@@ -111,6 +111,12 @@ const logIn = (req, res, next) => {
     .catch(next);
 };
 
+const signOut = (req, res) => {
+  res.status(200)
+    .clearCookie('token')
+    .send({ message: 'Вы вышли из аккаунта' });
+};
+
 const getCurrentUser = (req, res, next) => {
   const { _id } = req.user;
   User.findById(_id)
@@ -127,5 +133,6 @@ module.exports = {
   updateUserById,
   updateUserAvatar,
   logIn,
+  signOut,
   getCurrentUser,
 };

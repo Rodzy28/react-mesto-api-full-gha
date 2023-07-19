@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { createUserVerification, loginVerification } = require('../utils/verification');
 const userRoutes = require('./users');
 const cardRoutes = require('./cards');
-const { logIn, createUser } = require('../controllers/user');
+const { logIn, signOut, createUser } = require('../controllers/user');
 const auth = require('../middlewares/auth');
 const NotFoundError = require('../errors/NotFoundError');
 
@@ -11,6 +11,7 @@ router.post('/signup', createUserVerification, createUser);
 
 router.use(auth);
 
+router.use('/signout', signOut);
 router.use('/users', userRoutes);
 router.use('/cards', cardRoutes);
 router.use('/*', () => {

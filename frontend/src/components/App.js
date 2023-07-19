@@ -32,22 +32,16 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleTokenCheck = () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        authApi.checkToken(token)
-          .then((res) => {
-            if (res) {
-              setEmail(res.data.email);
-              setLoggedIn(true);
-              navigate("/", { replace: true });
-            }
-          })
-          .catch(console.error);
-      }
-    }
-    handleTokenCheck();
-  }, [navigate])
+    authApi.checkUser()
+      .then((data) => {
+        if (data) {
+          setEmail(data.email);
+          setLoggedIn(true);
+          navigate('/', { replace: true });
+        }
+      })
+      .catch(console.error);
+  }, [navigate]);
 
   // Вариант от Ревьювера "Можно лучше". Как сделать закрытие по Escape.
   // const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link
@@ -173,7 +167,6 @@ export default function App() {
     authApi.login(data)
       .then((res) => {
         if (res) {
-          localStorage.setItem('token', res.token);
           setLoggedIn(true);
           navigate("/", { replace: true });
         }
@@ -186,10 +179,13 @@ export default function App() {
   }
 
   function handleLogOut() {
-    localStorage.removeItem('token');
-    setLoggedIn(false);
-    setEmail("");
-    navigate("/sign-in", { replace: true });
+    authApi.signOut()
+      .then(() => {
+        setLoggedIn(false);
+        setEmail("");
+        navigate("/sign-in", { replace: true });
+      })
+      .catch(console.error);
   }
 
   return (
@@ -215,8 +211,7 @@ export default function App() {
                 />
               }
             />
-            <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />}
-            />
+            <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />} />
           </Routes>
           <Footer />
 

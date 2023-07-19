@@ -41,13 +41,20 @@ class AuthApi {
     });
   }
 
-  checkToken(token) {
+  signOut() {
+    return this._request(`${this._url}/signout`, {
+      method: 'GET',
+      credentials: 'include',
+    });
+  }
+
+  checkUser() {
     return this._request(`${this._url}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        'Content-Type': "application/json",
       },
     });
   }
