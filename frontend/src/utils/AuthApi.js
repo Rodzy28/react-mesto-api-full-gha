@@ -14,6 +14,7 @@ class AuthApi {
   registration(data) {
     return this._request(`${this._url}/signup`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -28,6 +29,7 @@ class AuthApi {
   login(data) {
     return this._request(`${this._url}/signin`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -52,6 +54,6 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: 'http://localhost:4000',
 });
 export default authApi;

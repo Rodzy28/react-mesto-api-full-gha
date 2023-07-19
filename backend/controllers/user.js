@@ -95,7 +95,7 @@ const updateUserAvatar = (req, res, next) => {
     });
 };
 
-const login = (req, res, next) => {
+const logIn = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
@@ -104,6 +104,7 @@ const login = (req, res, next) => {
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
         sameSite: true,
+        secure: true,
       });
       res.send(user.deletePassword());
     })
@@ -125,6 +126,6 @@ module.exports = {
   createUser,
   updateUserById,
   updateUserAvatar,
-  login,
+  logIn,
   getCurrentUser,
 };

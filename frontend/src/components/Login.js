@@ -18,8 +18,8 @@ export default function Login({ handleLogin }) {
     <div className="auth">
       <h2 className="auth__title">Вход</h2>
       <form onSubmit={handleSubmit} className="auth__form">
-        <input id="email" className="auth__input" type="email" name="email" placeholder="Email" value={values.email || ''} onChange={handleChange} required />
-        <input id="password" className="auth__input" type="password" name="password" placeholder="Пароль" value={values.password || ''} onChange={handleChange} minLength="5" maxLength="15" required />
+        <input id="email" autoComplete="off" className="auth__input" type="email" name="email" placeholder="Email" value={values.email || ''} onChange={handleChange} required />
+        <input id="password" autoComplete="off" className="auth__input" type="password" name="password" placeholder="Пароль" value={values.password || ''} onChange={handleChange} minLength="8" maxLength="15" required />
         <button type="submit" className="auth__button">Войти</button>
       </form>
     </div>

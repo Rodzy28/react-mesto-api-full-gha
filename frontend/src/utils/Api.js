@@ -15,6 +15,7 @@ class Api {
   getInitialCards() {
     return this._request(`${this._url}/cards`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     });
   }
@@ -22,6 +23,7 @@ class Api {
   getUserInfo() {
     return this._request(`${this._url}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -29,6 +31,7 @@ class Api {
   setUserInfo(data) {
     return this._request(`${this._url}/users/me`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -40,6 +43,7 @@ class Api {
   postNewCard(data) {
     return this._request(`${this._url}/cards`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -51,6 +55,7 @@ class Api {
   addLike(id, isLiked) {
     return this._request(`${this._url}/cards/${id}/likes`, {
       method: `${isLiked ? 'PUT' : 'DELETE'}`,
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -65,6 +70,7 @@ class Api {
   deleteCard(id) {
     return this._request(`${this._url}/cards/${id}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -72,6 +78,7 @@ class Api {
   setAvatar(data) {
     return this._request(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar
@@ -81,9 +88,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-63',
+  baseUrl: 'http://localhost:4000',
   headers: {
-    authorization: 'a12736da-b955-4664-b6d4-b697b2666b6e',
     'Content-Type': 'application/json'
   }
 });
