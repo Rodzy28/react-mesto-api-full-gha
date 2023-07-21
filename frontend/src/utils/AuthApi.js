@@ -61,7 +61,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'http://localhost:4000',
+  baseUrl: 'https://api.rodzy28.nomoredomains.xyz',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
