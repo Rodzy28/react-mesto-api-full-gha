@@ -81,9 +81,9 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://rodzy28.nomoredomains.xyz',
+  baseUrl: 'http://localhost:4000',
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 });
 export default api;

@@ -7,12 +7,8 @@ class AuthApi {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  _request(email, password) {
-    return fetch(email, password).then(this._handlerServerResponse);
-  }
-
   registration(data) {
-    return this._request(`${this._url}/signup`, {
+    return fetch(`${this._url}/signup`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -23,11 +19,12 @@ class AuthApi {
         email: data.email,
         password: data.password
       })
-    });
+    })
+    .then(this._handlerServerResponse);
   }
 
   login(data) {
-    return this._request(`${this._url}/signin`, {
+    return fetch(`${this._url}/signin`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -38,33 +35,36 @@ class AuthApi {
         email: data.email,
         password: data.password
       })
-    });
+    })
+    .then(this._handlerServerResponse);
   }
 
   signOut() {
-    return this._request(`${this._url}/signout`, {
+    return fetch(`${this._url}/signout`, {
       method: 'GET',
       credentials: 'include',
-    });
+    })
+    .then(this._handlerServerResponse);
   }
 
   checkUser() {
-    return this._request(`${this._url}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': "application/json",
       },
-    });
+    })
+    .then(this._handlerServerResponse);
   }
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'https://rodzy28.nomoredomains.xyz',
+  baseUrl: 'http://localhost:4000',
   headers: {
     'Accept': 'application/json',
-    'Content-Type': "application/json",
+    'Content-Type': 'application/json',
   }
 });
 export default authApi;
