@@ -104,8 +104,8 @@ const logIn = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'mama-ya-programmist', { expiresIn: '7d' });
       res.cookie('token', token, {
         maxAge: 1000 * 60 * 60 * 24,
-        httpOnly: true,
-        sameSite: true,
+        // httpOnly: true,
+        // sameSite: true,
         // secure: true,
       }).send(user.deletePassword());
     })
