@@ -11,6 +11,6 @@
 
 IP-адрес 84.201.173.120
 
-Frontend https://...
+Frontend https://rodzy28.nomoredomains.xyz
 
-Backend https://...
+Backend https://api.rodzy28.nomoredomains.xyz
