@@ -61,7 +61,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'http://84.201.173.120:4000',
+  baseUrl: 'https://rodzy28.nomoredomains.xyz',
   headers: {
     'Accept': 'application/json',
     'Content-Type': "application/json",

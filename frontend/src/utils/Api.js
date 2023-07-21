@@ -81,7 +81,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://84.201.173.120:4000',
+  baseUrl: 'https://rodzy28.nomoredomains.xyz',
   headers: {
     'Content-Type': 'application/json'
   }
