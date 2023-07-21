@@ -99,16 +99,15 @@ const updateUserAvatar = (req, res, next) => {
 
 const logIn = (req, res, next) => {
   const { email, password } = req.body;
-  return User.findUserByCredentials(email, password)
+  return User.findUserByCredentials({ email, password })
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'mama-ya-programmist', { expiresIn: '7d' });
       res.cookie('token', token, {
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      });
-      res.send(user.deletePassword());
+        sameSite: true,
+        // secure: true,
+      }).send(user.deletePassword());
     })
     .catch(next);
 };

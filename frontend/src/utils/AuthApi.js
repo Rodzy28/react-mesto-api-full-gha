@@ -61,6 +61,10 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'http://localhost:4000',
+  baseUrl: 'http://84.201.173.120:4000',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': "application/json",
+  }
 });
 export default authApi;
